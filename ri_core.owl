@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://example.org/ri.owl"
+         xmlns="http://example.org/ri.owl#">
+
+<owl:Ontology rdf:about="http://example.org/ri.owl">
+  <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl"/>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:about="#has_representation">
+  <rdfs:domain rdf:resource="#ResearchObject"/>
+  <rdfs:range rdf:resource="#Representation"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#produces">
+  <rdfs:domain rdf:resource="#Activity"/>
+  <rdfs:range rdf:resource="#ResearchObject"/>
+  <owl:inverseOf rdf:resource="#produced_by"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#produced_by">
+  <rdfs:domain rdf:resource="#ResearchObject"/>
+  <rdfs:range rdf:resource="#Activity"/>
+  <owl:inverseOf rdf:resource="#produces"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#uses">
+  <rdfs:domain rdf:resource="#Activity"/>
+  <rdfs:range rdf:resource="#ResearchObject"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#performed_by">
+  <rdfs:domain rdf:resource="#Activity"/>
+  <rdfs:range rdf:resource="#Agent"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#addresses_topic">
+  <rdfs:domain rdf:resource="#Activity"/>
+  <rdfs:range rdf:resource="#ResearchTopic"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_property">
+  <rdfs:domain rdf:resource="#Activity"/>
+  <rdfs:domain rdf:resource="#ResearchObject"/>
+  <rdfs:range rdf:resource="#ResearchObjectProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_provenance">
+  <rdfs:domain rdf:resource="#ResearchObject"/>
+  <rdfs:range rdf:resource="#Provenance"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="#ResearchObject">
+  <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationObject"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Research Object</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A data or artifact produced or used in research (e.g., datasets, samples, publications).</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#ResearchTopic">
+  <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Research Topic</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A research question or subject matter addressed by research.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Activity">
+  <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Activity</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A process or action taken in research (e.g., experiment, analysis).</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#ConceptualObject">
+  <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Conceptual Object</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A conceptual entity used in research (e.g., theory, model, method).</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Agent">
+  <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialAgent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Agent</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A person or organization involved in research (e.g., researcher, institution).</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#ResearchObjectProperty">
+  <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Research Object Property</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A characteristic or attribute of a research object or activity.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Provenance">
+  <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Provenance</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Information about the origin or history of a research object.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Representation">
+  <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationObject"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Representation</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A format or encoding of a research object (e.g., file format, schema).</rdfs:comment>
+</owl:Class>
+
+
+</rdf:RDF>
